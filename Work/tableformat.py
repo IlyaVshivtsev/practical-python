@@ -37,13 +37,16 @@ class CSVTableFormatter(TableFormatter):
 	def row(self, rowdata):
 		print(','.join(rowdata))
 
+class FormatError(Exception):
+	pass
+
 def create_formatter(fmt):
 	if fmt == 'txt':
 		return TextTableFormatter()
 	elif fmt == 'csv':
 		return CSVTableFormatter()
 	else:
-		raise RuntimeError(f'Unknown format {fmt}')
+		raise FormatError(f'Unknown format {fmt}')
 
 def print_table(data, attributes, formatter):
 	'''

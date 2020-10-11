@@ -39,6 +39,7 @@ def print_report(reportdata, formatter):
     formatter.headings(['Name','Shares','Price','Change'])
     for name, shares, price, change in reportdata:
         rowdata = [name, str(shares), f'{price:0.2f}', f'{change:0.2f}']
+        formatter.row(rowdata)
 
 def portfolio_report(portfoliofile, pricefile):        
     '''
@@ -52,7 +53,8 @@ def portfolio_report(portfoliofile, pricefile):
     report = make_report_data(portfolio, prices)
 
     # Print it out
-    formatter = tableformat.TableFormatter()
+    #formatter = tableformat.TextTableFormatter()
+    formatter = tableformat.CSVTableFormatter()
     print_report(report, formatter)
 
 def main(args):

@@ -12,3 +12,6 @@ class Stock:
 		
 	def sell(self, diff):
 		self.shares -= diff
+
+	def __repr__(self):
+		return f'Stock({self.name:s}, {self.shares:d}, {self.price:0.1f})'

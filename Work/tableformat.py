@@ -44,3 +44,12 @@ def create_formatter(fmt):
 		return CSVTableFormatter()
 	else:
 		raise RuntimeError(f'Unknown format {fmt}')
+
+def print_table(data, attributes, formatter):
+	'''
+	Print a table showing user-specified attributes of a list of arbitrary objects
+	'''
+	formatter.headings(attributes)
+	for instance in data:
+		rowdata = [str(getattr(instance, attribute)) for attribute in attributes]
+		formatter.row(rowdata)

@@ -2,6 +2,8 @@
 
 class Stock:
 
+	__slots__ = ('name', '_shares', 'price')
+
 	def __init__(self, name, shares, price):
 		self.name = name
 		self.shares = shares
@@ -17,7 +19,7 @@ class Stock:
 
 	@shares.setter
 	def shares(self, value):
-		if not isinstance(int, value):
+		if not isinstance(value, int):
 			raise TypeError('Expected integer')
 		self._shares = value
 	

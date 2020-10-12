@@ -11,6 +11,16 @@ class Stock:
 	def cost(self):
 		return self.shares * self.price
 		
+	@property
+	def shares(self):
+		return self._shares
+
+	@shares.setter
+	def shares(self, value):
+		if not isinstance(int, value):
+			raise TypeError('Expected integer')
+		self._shares = value
+	
 	def sell(self, diff):
 		self.shares -= diff
 
